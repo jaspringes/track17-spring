@@ -55,7 +55,7 @@ public class CountWords {
      * @param file - файл с данными
      * @return - результирующая строка
      */
-    public StringJoiner concatWords(File file) throws Exception {
+    public String concatWords(File file) throws Exception {
         StringJoiner answer = new StringJoiner(" ");
         try ( BufferedReader inputFile = new BufferedReader(new FileReader(file)) ) {
             String part;
@@ -69,7 +69,7 @@ public class CountWords {
                 }
             }
         }
-        return answer;
+        return answer.toString();
     }
 
 }
