@@ -8,13 +8,13 @@ public class MyStack implements Stack {
     private MyLinkedList list = new MyLinkedList();
 
     @Override
-    public void push(int value){
+    public void push(int value) {
         list.add(value);
     }
 
     @Override
-    public int pop(){
-        return list.remove(list.size()-1);
+    public int pop() {
+        return list.remove(list.size() - 1);
     }
 
     @Override

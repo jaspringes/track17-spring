@@ -29,21 +29,21 @@ public class MyLinkedList extends List {
         }
     }
 
-    public MyLinkedList(){
+    public MyLinkedList() {
     }
 
-    private Node getNode(int idx){
+    private Node getNode(int idx) {
         checkIndex(idx);
         Node current;
-        if(idx<currentSize/2) {
+        if (idx < currentSize / 2) {
             current = head;
-            while (idx > 0){
+            while (idx > 0) {
                 current = current.next;
                 idx -= 1;
             }
         } else {
             current = tail;
-            while (idx > 0){
+            while (idx > 0) {
                 current = current.prev;
                 idx -= 1;
             }
@@ -54,10 +54,10 @@ public class MyLinkedList extends List {
     @Override
     public void add(int item) {
         currentSize += 1;
-        if (head == null){
-          tail = head = new Node(null,null,item);
+        if (head == null) {
+            tail = head = new Node(null, null, item);
         } else {
-            tail = tail.next = new Node(tail,null,item);
+            tail = tail.next = new Node(tail, null, item);
         }
 
     }
@@ -65,10 +65,10 @@ public class MyLinkedList extends List {
     @Override
     public int remove(int idx) throws NoSuchElementException {
         Node removedNode = getNode(idx);
-        removedNode.prev.next = (removedNode.prev != null)? removedNode.next : null;
-        removedNode.next.prev = (removedNode.next != null)? removedNode.prev : null;
-        head = (idx == 0)? head.next : head;
-        tail = (idx == currentSize)? tail.prev : tail;
+        removedNode.prev.next = (removedNode.prev != null) ? removedNode.next : null;
+        removedNode.next.prev = (removedNode.next != null) ? removedNode.prev : null;
+        head = (idx == 0) ? head.next : head;
+        tail = (idx == currentSize) ? tail.prev : tail;
         currentSize -= 1;
         return removedNode.val;
     }
