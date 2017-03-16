@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
  */
 public class MyArrayList extends List {
 
-    private static final int defaultSize = 64;
+    private static final int defaultSize = 16;
     private int[] array;
     private int size = 0;
 
@@ -57,7 +57,7 @@ public class MyArrayList extends List {
     @Override
     public int remove(int idx) throws NoSuchElementException {
         checkIndex(idx);
-        currentSize = currentSize - 1;
+        currentSize -= 1;
         int answer = array[idx];
         System.arraycopy(array, idx + 1, array, idx, currentSize - idx);
         if (currentSize < size / 4) {
@@ -72,3 +72,4 @@ public class MyArrayList extends List {
         return array[idx];
     }
 }
+
