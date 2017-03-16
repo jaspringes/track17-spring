@@ -3,7 +3,8 @@ package track.lessons.lesson3;
 /**
  * Created by alldark on 16.03.17.
  */
-public class MyStack implements Stack{
+public class MyStack implements Stack {
+
     private MyLinkedList list = new MyLinkedList();
 
     @Override

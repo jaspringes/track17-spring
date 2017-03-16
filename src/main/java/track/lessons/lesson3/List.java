@@ -13,11 +13,12 @@ public abstract class List {
 
     protected int currentSize = 0;
 
-    protected void checkIndex(int index){
-        if (index < 0 || index >= currentSize){
+    protected void checkIndex(int index) {
+        if (index < 0 || index >= currentSize) {
             throw new NoSuchElementException();
         }
     }
+
     /**
      * Добавить элемент в конец списка
      */

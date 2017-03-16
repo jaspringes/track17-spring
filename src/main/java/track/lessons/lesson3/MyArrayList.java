@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 /**
  * Должен наследовать List
- *
+ * <p>
  * Должен иметь 2 конструктора
  * - без аргументов - создает внутренний массив дефолтного размера на ваш выбор
  * - с аргументом - начальный размер массива
@@ -22,31 +22,31 @@ public class MyArrayList extends List {
     }
 
     public MyArrayList(int size) {
-        if (size < defaultSize){
+        if (size < defaultSize) {
             size = defaultSize;
         }
         array = new int[size];
     }
 
-    private void boost() throws OutOfMemoryError{
+    private void boost() throws OutOfMemoryError {
         size *= 2;
         int[] buffer = new int[size];
-        System.arraycopy(array,0,buffer,0, currentSize);
+        System.arraycopy(array, 0, buffer, 0, currentSize);
         array = buffer;
     }
 
-    private void reduce(){
-        if (size <=defaultSize){
+    private void reduce() {
+        if (size <= defaultSize) {
             return;
         }
-        int[] buffer = new int[size/2];
-        System.arraycopy(buffer,0,array,0, currentSize);
+        int[] buffer = new int[size / 2];
+        System.arraycopy(buffer, 0, array, 0, currentSize);
         array = buffer;
     }
 
     @Override
     public void add(int item) {
-        if (currentSize == size){
+        if (currentSize == size) {
             boost();
         }
         array[currentSize] = item;
@@ -58,8 +58,8 @@ public class MyArrayList extends List {
         checkIndex(idx);
         currentSize = currentSize - 1;
         int answer = array[idx];
-        System.arraycopy(array, idx+1, array,idx,currentSize-idx);
-        if (currentSize < size/4){
+        System.arraycopy(array, idx + 1, array, idx, currentSize - idx);
+        if (currentSize < size / 4) {
             reduce();
         }
         return answer;
