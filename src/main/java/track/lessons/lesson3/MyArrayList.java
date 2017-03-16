@@ -37,12 +37,13 @@ public class MyArrayList extends List {
     }
 
     private void reduce() {
-        if (size < defaultSize) {
+        if (size <= defaultSize) {
             return;
+        } else {
+            int[] buffer = new int[size / 2];
+            System.arraycopy(buffer, 0, array, 0, currentSize);
+            array = buffer;
         }
-        int[] buffer = new int[size / 2];
-        System.arraycopy(buffer, 0, array, 0, currentSize);
-        array = buffer;
     }
 
     @Override
@@ -60,7 +61,7 @@ public class MyArrayList extends List {
         currentSize -= 1;
         int answer = array[idx];
         System.arraycopy(array, idx + 1, array, idx, currentSize - idx);
-        if (currentSize < size / 4) {
+        if (currentSize < (size / 4)) {
             reduce();
         }
         return answer;
