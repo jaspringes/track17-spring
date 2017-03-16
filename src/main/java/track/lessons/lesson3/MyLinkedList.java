@@ -42,6 +42,7 @@ public class MyLinkedList extends List {
                 idx -= 1;
             }
         } else {
+            idx = currentSize - idx - 1;
             current = tail;
             while (idx > 0) {
                 current = current.prev;
@@ -55,9 +56,9 @@ public class MyLinkedList extends List {
     public void add(int item) {
         currentSize += 1;
         if (head == null) {
-            tail = head = new Node(null, null, item);
+            tail = (head = new Node(null, null, item));
         } else {
-            tail = tail.next = new Node(tail, null, item);
+            tail = (tail.next = new Node(tail, null, item));
         }
 
     }

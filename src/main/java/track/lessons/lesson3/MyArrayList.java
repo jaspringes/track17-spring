@@ -21,11 +21,12 @@ public class MyArrayList extends List {
         size = defaultSize;
     }
 
-    public MyArrayList(int size) {
-        if (size < defaultSize) {
-            size = defaultSize;
+    public MyArrayList(int initSize) {
+        if (initSize < defaultSize) {
+            initSize = defaultSize;
         }
-        array = new int[size];
+        array = new int[initSize];
+        size = initSize;
     }
 
     private void boost() throws OutOfMemoryError {
