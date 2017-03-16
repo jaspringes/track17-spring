@@ -36,7 +36,7 @@ public class MyArrayList extends List {
     }
 
     private void reduce() {
-        if (size <= defaultSize) {
+        if (size < defaultSize) {
             return;
         }
         int[] buffer = new int[size / 2];

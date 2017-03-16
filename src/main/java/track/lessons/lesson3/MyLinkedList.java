@@ -65,10 +65,18 @@ public class MyLinkedList extends List {
     @Override
     public int remove(int idx) throws NoSuchElementException {
         Node removedNode = getNode(idx);
-        removedNode.prev.next = (removedNode.prev != null) ? removedNode.next : null;
-        removedNode.next.prev = (removedNode.next != null) ? removedNode.prev : null;
-        head = (idx == 0) ? head.next : head;
-        tail = (idx == currentSize) ? tail.prev : tail;
+        if (removedNode.prev != null) {
+            removedNode.prev.next = removedNode.next;
+        }
+        if (removedNode.next != null) {
+            removedNode.next.prev = removedNode.prev;
+        }
+        if (idx == 0) {
+            head = head.next;
+        }
+        if (idx == currentSize - 1) {
+            tail = tail.prev;
+        }
         currentSize -= 1;
         return removedNode.val;
     }
