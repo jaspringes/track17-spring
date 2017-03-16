@@ -32,20 +32,20 @@ public class MyLinkedList extends List {
     public MyLinkedList(){
     }
 
-    private Node getNode(int index){
-        checkIndex(index);
+    private Node getNode(int idx){
+        checkIndex(idx);
         Node current;
-        if(index<currentSize/2) {
+        if(idx<currentSize/2) {
             current = head;
-            while (index > 0){
+            while (idx > 0){
                 current = current.next;
-                index -= 1;
+                idx -= 1;
             }
         } else {
             current = tail;
-            while (index > 0){
+            while (idx > 0){
                 current = current.prev;
-                index -= 1;
+                idx -= 1;
             }
         }
         return current;
@@ -63,19 +63,19 @@ public class MyLinkedList extends List {
     }
 
     @Override
-    public int remove(int index) throws NoSuchElementException {
-        Node removedNode = getNode(index);
+    public int remove(int idx) throws NoSuchElementException {
+        Node removedNode = getNode(idx);
         removedNode.prev.next = (removedNode.prev != null)? removedNode.next : null;
         removedNode.next.prev = (removedNode.next != null)? removedNode.prev : null;
-        head = (index == 0)? head.next : head;
-        tail = (index == currentSize)? tail.prev : tail;
+        head = (idx == 0)? head.next : head;
+        tail = (idx == currentSize)? tail.prev : tail;
         currentSize -= 1;
         return removedNode.val;
     }
 
     @Override
-    public int get(int index) throws NoSuchElementException {
-        return getNode(index).val;
+    public int get(int idx) throws NoSuchElementException {
+        return getNode(idx).val;
     }
 
     @Override

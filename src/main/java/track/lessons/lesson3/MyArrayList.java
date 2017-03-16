@@ -54,11 +54,11 @@ public class MyArrayList extends List {
     }
 
     @Override
-    public int remove(int index) throws NoSuchElementException {
-        checkIndex(index);
+    public int remove(int idx) throws NoSuchElementException {
+        checkIndex(idx);
         currentSize = currentSize - 1;
-        int answer = array[index];
-        System.arraycopy(array, index+1, array,index,currentSize-index);
+        int answer = array[idx];
+        System.arraycopy(array, idx+1, array,idx,currentSize-idx);
         if (currentSize < size/4){
             reduce();
         }
@@ -66,8 +66,8 @@ public class MyArrayList extends List {
     }
 
     @Override
-    public int get(int index) throws NoSuchElementException {
-        checkIndex(index);
-        return array[index];
+    public int get(int idx) throws NoSuchElementException {
+        checkIndex(idx);
+        return array[idx];
     }
 }
