@@ -12,7 +12,7 @@ public class HashMapImpl {
         array = new Entry[DEFAULT_CAPACITY];
     }
 
-    public void put(Integer key, String value) {
+    public String put(Integer key, String value) {
         int idx = key.hashCode() % array.length;
         Entry current = array[idx];
         if (current == null) {
@@ -20,8 +20,9 @@ public class HashMapImpl {
         } else {
             do {
                 if (current.key.equals(key)) { // Подменяем значение
+                    String answer = current.value;
                     current.value = value;
-                    return;
+                    return answer;
                 }
                 // Бежим по цепочке
                 current = current.next;
@@ -30,6 +31,7 @@ public class HashMapImpl {
             // Добавляем в конец
             current.next = new Entry(key, value, null);
         }
+        return null;
     }
 
     public String get(Integer key) {
